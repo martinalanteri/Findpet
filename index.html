@@ -7,422 +7,361 @@
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-
-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 .hide { display: none !important; }
 body {
-background-color: #F7F5F0; /* Soft Warm Cream */
-color: #4A4A4A;
+  background-color: #F7F5F0; /* Soft Warm Cream */
+  color: #4A4A4A;
 }
 </style>
 </head>
 <body class="font-sans antialiased pb-20">
+
 <!-- AUTHENTICATION CONTAINER -->
 <div id="auth-screen" class="min-h-screen flex items-center justify-center p-4">
-<div class="bg-[#FAF9F5] p-8 rounded-3xl shadow-lg w-full max-w-md border
-border-[#EBE7DF]">
-<div class="text-center mb-6">
-<div class="w-16 h-16 bg-[#E2ECE9] text-[#5A8F81] rounded-full flex
-items-center justify-center mx-auto mb-3 shadow-inner">
-<i class="fa-solid fa-paw text-3xl"></i>
+  <div class="bg-[#FAF9F5] p-8 rounded-3xl shadow-lg w-full max-w-md border border-[#EBE7DF]">
+    <div class="text-center mb-6">
+      <div class="w-16 h-16 bg-[#E2ECE9] text-[#5A8F81] rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+        <i class="fa-solid fa-paw text-3xl"></i>
+      </div>
+      <h1 class="text-3xl font-extrabold tracking-tight text-[#42504B]">LostPaws</h1>
+      <p class="text-xs font-semibold text-[#8C9B95] tracking-wider uppercase mt-1">Santa Cruz de la Sierra</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Email</label>
+        <input type="email" id="login-email" required class="w-full px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD] focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Password</label>
+        <input type="password" id="login-password" required class="w-full px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD] focus:outline-none">
+      </div>
+      <button type="submit" class="w-full bg-[#A3C1AD] hover:bg-[#8FB39D] text-[#2C3E35] font-bold py-3 px-4 rounded-xl shadow-sm transition duration-200">Log In</button>
+      <p class="text-center text-sm text-[#7A8A83] mt-4">
+        New here? <button type="button" onclick="toggleAuthMode()" class="text-[#5A8F81] font-bold hover:underline">Create an account</button>
+      </p>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signup-form" onsubmit="handleSignup(event)" class="space-y-4 hide">
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Full Name</label>
+        <input type="text" id="signup-name" required class="w-full px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD] focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Email</label>
+        <input type="email" id="signup-email" required class="w-full px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD] focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Password</label>
+        <input type="password" id="signup-password" required class="w-full px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD] focus:outline-none">
+      </div>
+      <button type="submit" class="w-full bg-[#A3C1AD] hover:bg-[#8FB39D] text-[#2C3E35] font-bold py-3 px-4 rounded-xl shadow-sm transition duration-200">Sign Up</button>
+      <p class="text-center text-sm text-[#7A8A83] mt-4">
+        Already have an account? <button type="button" onclick="toggleAuthMode()" class="text-[#5A8F81] font-bold hover:underline">Log in</button>
+      </p>
+    </form>
+  </div>
 </div>
-[#42504B]">LostPaws</h1>
-<h1 class="text-3xl font-extrabold tracking-tight text-
-<p class="text-xs font-semibold text-[#8C9B95] tracking-wider
-uppercase mt-1">Santa Cruz de la Sierra</p>
-</div>
-<!-- Login Form -->
-<form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
-<div>
-mb-1">Email</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="email" id="login-email" required class="w-full px-4
-py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD]
-focus:outline-none">
-</div>
-<div>
-mb-1">Password</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="password" id="login-password" required class="w-full
-px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-
-[#A3C1AD] focus:outline-none">
-</div>
-<button type="submit" class="w-full bg-[#A3C1AD] hover:bg-[#8FB39D]
-text-[#2C3E35] font-bold py-3 px-4 rounded-xl shadow-sm transition duration-200">Log
-In</button>
-<p class="text-center text-sm text-[#7A8A83] mt-4">
-New here? <button type="button" onclick="toggleAuthMode()"
-class="text-[#5A8F81] font-bold hover:underline">Create an account</button>
-</p>
-</form>
-<!-- Signup Form -->
-hide">
-<form id="signup-form" onsubmit="handleSignup(event)" class="space-y-4
-<div>
-mb-1">Full Name</label>
-</div>
-<div>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="text" id="signup-name" required class="w-full px-4
-py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD]
-focus:outline-none">
-mb-1">Email</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="email" id="signup-email" required class="w-full px-4
-py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-[#A3C1AD]
-focus:outline-none">
-</div>
-<div>
-mb-1">Password</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="password" id="signup-password" required class="w-
-full px-4 py-2.5 bg-white border border-[#E2ECE9] rounded-xl focus:ring-2 focus:ring-
-[#A3C1AD] focus:outline-none">
-</div>
-<button type="submit" class="w-full bg-[#A3C1AD] hover:bg-[#8FB39D]
-text-[#2C3E35] font-bold py-3 px-4 rounded-xl shadow-sm transition duration-200">Sign
-Up</button>
-<p class="text-center text-sm text-[#7A8A83] mt-4">
-Already have an account? <button type="button"
-onclick="toggleAuthMode()" class="text-[#5A8F81] font-bold hover:underline">Log
-in</button>
-</p>
-</form>
-</div>
-</div>
+
 <!-- APP CONTAINER -->
 <div id="app-screen" class="hide min-h-screen">
-<!-- Top Navigation Bar -->
-<header class="bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EBE7DF]
-sticky top-0 z-40 px-4 py-3">
-<div class="max-w-md mx-auto flex justify-between items-center">
-<div>
-[#5A8F81] font-serif">LostPaws</h1>
-<h1 class="text-2xl font-black italic tracking-wide text-
-<span class="text-[10px] text-[#8C9B95] font-semibold tracking-
-wider uppercase">Santa Cruz de la Sierra</span>
+  <!-- Top Navigation Bar -->
+  <header class="bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EBE7DF] sticky top-0 z-40 px-4 py-3">
+    <div class="max-w-md mx-auto flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-black italic tracking-wide text-[#5A8F81] font-serif">LostPaws</h1>
+        <span class="text-[10px] text-[#8C9B95] font-semibold tracking-wider uppercase">Santa Cruz de la Sierra</span>
+      </div>
+      <div class="flex items-center space-x-3">
+        <button onclick="openReportModal()" class="bg-[#A3C1AD] text-[#2C3E35] px-3.5 py-1.5 rounded-full text-xs font-bold shadow-sm hover:bg-[#8FB39D] transition flex items-center gap-1">
+          <i class="fa-solid fa-plus"></i> Report Pet
+        </button>
+        <button onclick="logout()" class="text-[#8C9B95] hover:text-[#D98880] text-sm p-1.5 rounded-full hover:bg-gray-100 transition" title="Log out">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Feed Layout -->
+  <main class="max-w-md mx-auto pt-3 px-2 space-y-4">
+    <!-- Search & Filter Bar -->
+    <div class="bg-white p-3 rounded-2xl border border-[#EBE7DF] shadow-sm flex items-center space-x-2">
+      <i class="fa-solid fa-magnifying-glass text-[#8C9B95] pl-1"></i>
+      <input type="text" id="search-input" oninput="filterFeed()" placeholder="Search Equipetrol, Urubó, breed..." class="w-full bg-transparent text-sm focus:outline-none text-[#4A4A4A]">
+    </div>
+
+    <!-- Posts Feed Container -->
+    <div id="feed-container" class="space-y-6">
+      <!-- Dynamically injected posts -->
+    </div>
+  </main>
 </div>
-<div class="flex items-center space-x-3">
-<button onclick="openReportModal()" class="bg-[#A3C1AD] text-
-[#2C3E35] px-3.5 py-1.5 rounded-full text-xs font-bold shadow-sm hover:bg-[#8FB39D]
-transition flex items-center gap-1">
-<i class="fa-solid fa-plus"></i> Report Pet
-</button>
-[#D98880] text-sm p-1">
-</div>
-</div>
-</header>
-<!-- Main Feed Layout -->
-<main class="max-w-md mx-auto pt-3 px-2 space-y-4">
-<!-- Search & Filter Bar -->
-<div class="bg-white p-3 rounded-2xl border border-[#EBE7DF] shadow-sm
-flex items-center space-x-2">
-<i class="fa-solid fa-magnifying-glass text-[#8C9B95] pl-1"></i>
-<input type="text" id="search-input" oninput="filterFeed()"
-placeholder="Search Equipetrol, Urubó, breed..." class="w-full bg-transparent text-sm
-focus:outline-none text-[#4A4A4A]">
-</div>
-<!-- Posts Feed Container -->
-<div id="feed-container" class="space-y-6">
-<!-- Dynamically injected posts -->
-</div>
-</main>
-</div>
+
 <!-- REPORT MODAL -->
-<div id="report-modal" class="fixed inset-0 bg-[#2C3E35]/40 backdrop-blur-sm z-50
-flex items-center justify-center p-4 hide">
-<button onclick="logout()" class="text-[#8C9B95] hover:text-
-<i class="fa-solid fa-right-from-bracket"></i>
-</button>
-<div class="bg-[#FAF9F5] rounded-3xl w-full max-w-md p-6 relative max-h-
-[90vh] overflow-y-auto shadow-xl border border-[#EBE7DF]">
-<div class="flex justify-between items-center mb-4 border-b border-
-[#EBE7DF] pb-3">
-Report</h2>
-<h2 class="text-base font-bold text-[#42504B]">Create Santa Cruz Pet
-<button onclick="closeReportModal()" class="text-[#8C9B95]
-hover:text-[#42504B]"><i class="fa-solid fa-xmark text-lg"></i></button>
+<div id="report-modal" class="fixed inset-0 bg-[#2C3E35]/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hide">
+  <div class="bg-[#FAF9F5] rounded-3xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto shadow-xl border border-[#EBE7DF]">
+    <div class="flex justify-between items-center mb-4 border-b border-[#EBE7DF] pb-3">
+      <h2 class="text-base font-bold text-[#42504B]">Create Santa Cruz Pet Report</h2>
+      <button onclick="closeReportModal()" class="text-[#8C9B95] hover:text-[#42504B]"><i class="fa-solid fa-xmark text-lg"></i></button>
+    </div>
+    <form onsubmit="handleNewReport(event)" class="space-y-3">
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Status Type</label>
+        <select id="report-status" class="w-full px-3 py-2 bg-white border border-[#E2ECE9] rounded-xl focus:outline-none text-sm text-[#4A4A4A]">
+          <option value="LOST">🔴 LOST PET</option>
+          <option value="FOUND">🟢 FOUND PET</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Pet Breed</label>
+        <input type="text" id="report-breed" placeholder="e.g., Mestizo, Poodle" required class="w-full px-3 py-2 bg-white border border-[#E2ECE9] rounded-xl focus:outline-none text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Color / Markings</label>
+        <input type="text" id="report-color" placeholder="e.g., Brown and white spots" required class="w-full px-3 py-2 bg-white border border-[#E2ECE9] rounded-xl focus:outline-none text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Area / Neighborhood</label>
+        <input type="text" id="report-location" placeholder="e.g., Equipetrol Norte, 3er Anillo" required class="w-full px-3 py-2 bg-white border border-[#E2ECE9] rounded-xl focus:outline-none text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Upload Photo</label>
+        <input type="file" id="report-image-file" accept="image/*" required class="w-full px-2 py-1.5 bg-white border border-[#E2ECE9] rounded-xl text-xs file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2ECE9] file:text-[#42504B] hover:file:bg-[#d1e2de]">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Other Details & Contact (WhatsApp)</label>
+        <textarea id="report-details" placeholder="Collar details, friendly/scared, WhatsApp phone number..." rows="2" required class="w-full px-3 py-2 bg-white border border-[#E2ECE9] rounded-xl focus:outline-none text-sm"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-[#A3C1AD] hover:bg-[#8FB39D] text-[#2C3E35] font-bold py-2.5 rounded-xl transition shadow-sm">Publish Report</button>
+    </form>
+  </div>
 </div>
-<form onsubmit="handleNewReport(event)" class="space-y-3">
-<div>
-mb-1">Status Type</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<select id="report-status" class="w-full px-3 py-2 bg-white
-border border-[#E2ECE9] rounded-xl focus:outline-none text-sm text-[#4A4A4A]">
-<option value="LOST">🔴 LOST PET</option>
-<option value="FOUND">🔴 FOUND PET</option>
-</select>
-</div>
-<div>
-mb-1">Pet Breed</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="text" id="report-breed" placeholder="e.g., Mestizo,
-Poodle" required class="w-full px-3 py-2 bg-white border border-[#E2ECE9] rounded-xl
-focus:outline-none text-sm">
-</div>
-<div>
-mb-1">Color / Markings</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="text" id="report-color" placeholder="e.g., Brown and
-white spots" required class="w-full px-3 py-2 bg-white border border-[#E2ECE9]
-rounded-xl focus:outline-none text-sm">
-</div>
-<div>
-mb-1">Area / Neighborhood</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="text" id="report-location" placeholder="e.g.,
-Equipetrol Norte, 3er Anillo" required class="w-full px-3 py-2 bg-white border
-border-[#E2ECE9] rounded-xl focus:outline-none text-sm">
-</div>
-<div>
-mb-1">Upload Photo</label>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-<input type="file" id="report-image-file" accept="image/*"
-required class="w-full px-2 py-1.5 bg-white border border-[#E2ECE9] rounded-xl text-
-xs file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs
-file:font-semibold file:bg-[#E2ECE9] file:text-[#42504B] hover:file:bg-[#d1e2de]">
-</div>
-<div>
-<label class="block text-xs font-bold uppercase text-[#7A8A83]
-mb-1">Other Details & Contact (WhatsApp)</label>
-<textarea id="report-details" placeholder="Collar details,
-friendly/scared, WhatsApp phone number..." rows="2" required class="w-full px-3 py-2
-bg-white border border-[#E2ECE9] rounded-xl focus:outline-none text-sm"></textarea>
-</div>
-<button type="submit" class="w-full bg-[#A3C1AD] hover:bg-[#8FB39D]
-text-[#2C3E35] font-bold py-2.5 rounded-xl transition shadow-sm">Publish
-Report</button>
-</form>
-</div>
-</div>
+
 <!-- JAVASCRIPT LOGIC -->
 <script>
 let users = JSON.parse(localStorage.getItem('lostpaws_users_scz')) || [];
-let currentUser =
-JSON.parse(localStorage.getItem('lostpaws_current_user_scz')) || null;
+let currentUser = JSON.parse(localStorage.getItem('lostpaws_current_user_scz')) || null;
+
 // Initial Santa Cruz demo data
 let reports = JSON.parse(localStorage.getItem('lostpaws_reports_scz')) || [
-{
-id: 1,
-author: "Valeria Rojas",
-status: "LOST",
-breed: "Golden Retriever",
-color: "Golden Blonde",
-location: "Equipetrol, near Av. San Martín",
-image: "https://images.unsplash.com/photo-1552053831-71594a27632d?
-auto=format&fit=crop&w=600&q=80",
-details: "Answers to 'Bruno'. Wearing a red leather collar. Contact
-via WhatsApp: +591 71234567.",
-date: "2 hours ago",
-comments: [{ author: "Mateo", text: "I'll keep an eye out near the
-canal drain in Equipetrol!" }]
-},
-{
-id: 2,
-author: "Rodrigo Paz",
-status: "FOUND",
-breed: "Mestizo / Mixed",
-color: "Black with white paws",
-location: "Urubó Village entrance",
-image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?
-auto=format&fit=crop&w=600&q=80",
-details: "Found wandering near the bridge. Very calm, looks well
-cared for. Call +591 79876543.",
-date: "5 hours ago",
-comments: []
-}
+  {
+    id: 1,
+    author: "Valeria Rojas",
+    status: "LOST",
+    breed: "Golden Retriever",
+    color: "Golden Blonde",
+    location: "Equipetrol, near Av. San Martín",
+    image: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80",
+    details: "Answers to 'Bruno'. Wearing a red leather collar. Contact via WhatsApp: +591 71234567.",
+    date: "2 hours ago",
+    comments: [{ author: "Mateo", text: "I'll keep an eye out near the canal drain in Equipetrol!" }]
+  },
+  {
+    id: 2,
+    author: "Rodrigo Paz",
+    status: "FOUND",
+    breed: "Mestizo / Mixed",
+    color: "Black with white paws",
+    location: "Urubó Village entrance",
+    image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80",
+    details: "Found wandering near the bridge. Very calm, looks well cared for. Call +591 79876543.",
+    date: "5 hours ago",
+    comments: []
+  }
 ];
+
 window.onload = function() {
-if (currentUser) {
-showAppScreen();
-}
+  if (currentUser) {
+    showAppScreen();
+  }
 };
+
 function toggleAuthMode() {
-document.getElementById('login-form').classList.toggle('hide');
-document.getElementById('signup-form').classList.toggle('hide');
+  document.getElementById('login-form').classList.toggle('hide');
+  document.getElementById('signup-form').classList.toggle('hide');
 }
+
 function handleSignup(e) {
-e.preventDefault();
-const name = document.getElementById('signup-name').value;
-const email = document.getElementById('signup-email').value;
-const password = document.getElementById('signup-password').value;
-if(users.some(u => u.email === email)) {
-alert("An account with this email already exists.");
-return;
+  e.preventDefault();
+  const name = document.getElementById('signup-name').value;
+  const email = document.getElementById('signup-email').value;
+  const password = document.getElementById('signup-password').value;
+  
+  if(users.some(u => u.email === email)) {
+    alert("An account with this email already exists.");
+    return;
+  }
+  
+  const newUser = { name, email, password };
+  users.push(newUser);
+  localStorage.setItem('lostpaws_users_scz', JSON.stringify(users));
+  currentUser = newUser;
+  localStorage.setItem('lostpaws_current_user_scz', JSON.stringify(currentUser));
+  showAppScreen();
 }
-const newUser = { name, email, password };
-users.push(newUser);
-localStorage.setItem('lostpaws_users_scz', JSON.stringify(users));
-currentUser = newUser;
-localStorage.setItem('lostpaws_current_user_scz',
-JSON.stringify(currentUser));
-showAppScreen();
-}
+
 function handleLogin(e) {
-e.preventDefault();
-const email = document.getElementById('login-email').value;
-const password = document.getElementById('login-password').value;
-const user = users.find(u => u.email === email && u.password ===
-password);
-if(user) {
-currentUser = user;
-localStorage.setItem('lostpaws_current_user_scz',
-JSON.stringify(currentUser));
-showAppScreen();
-} else {
-alert("Incorrect email or password.");
+  e.preventDefault();
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if(user) {
+    currentUser = user;
+    localStorage.setItem('lostpaws_current_user_scz', JSON.stringify(currentUser));
+    showAppScreen();
+  } else {
+    alert("Incorrect email or password.");
+  }
 }
-}
+
 function logout() {
-currentUser = null;
-localStorage.removeItem('lostpaws_current_user_scz');
-document.getElementById('app-screen').classList.add('hide');
-document.getElementById('auth-screen').classList.remove('hide');
+  currentUser = null;
+  localStorage.removeItem('lostpaws_current_user_scz');
+  document.getElementById('app-screen').classList.add('hide');
+  document.getElementById('auth-screen').classList.remove('hide');
 }
+
 function showAppScreen() {
-document.getElementById('auth-screen').classList.add('hide');
-document.getElementById('app-screen').classList.remove('hide');
-renderFeed(reports);
+  document.getElementById('auth-screen').classList.add('hide');
+  document.getElementById('app-screen').classList.remove('hide');
+  renderFeed(reports);
 }
+
 function openReportModal() {
+  document.getElementById('report-modal').classList.remove('hide');
 }
-document.getElementById('report-modal').classList.remove('hide');
+
 function closeReportModal() {
+  document.getElementById('report-modal').classList.add('hide');
 }
-document.getElementById('report-modal').classList.add('hide');
+
 function handleNewReport(e) {
-e.preventDefault();
-const fileInput = document.getElementById('report-image-file');
-const file = fileInput.files[0];
-if (file) {
-const reader = new FileReader();
-reader.onload = function(uploadEvent) {
-saveReportObject(uploadEvent.target.result);
-};
-reader.readAsDataURL(file);
+  e.preventDefault();
+  const fileInput = document.getElementById('report-image-file');
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(uploadEvent) {
+      saveReportObject(uploadEvent.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
 }
-}
+
 function saveReportObject(imageUrl) {
-const newReport = {
-id: Date.now(),
-author: currentUser.name,
-status: document.getElementById('report-status').value,
-breed: document.getElementById('report-breed').value,
-color: document.getElementById('report-color').value,
-location: document.getElementById('report-location').value,
-image: imageUrl,
-details: document.getElementById('report-details').value,
-date: "Just now",
-comments: []
-};
-reports.unshift(newReport);
-localStorage.setItem('lostpaws_reports_scz', JSON.stringify(reports));
-closeReportModal();
-renderFeed(reports);
-document.querySelector('#report-modal form').reset();
+  const newReport = {
+    id: Date.now(),
+    author: currentUser.name,
+    status: document.getElementById('report-status').value,
+    breed: document.getElementById('report-breed').value,
+    color: document.getElementById('report-color').value,
+    location: document.getElementById('report-location').value,
+    image: imageUrl,
+    details: document.getElementById('report-details').value,
+    date: "Just now",
+    comments: []
+  };
+  reports.unshift(newReport);
+  localStorage.setItem('lostpaws_reports_scz', JSON.stringify(reports));
+  closeReportModal();
+  renderFeed(reports);
+  document.querySelector('#report-modal form').reset();
 }
+
 function filterFeed() {
-const query = document.getElementById('search-
-input').value.toLowerCase();
-const filtered = reports.filter(r =>
-r.breed.toLowerCase().includes(query) ||
-r.color.toLowerCase().includes(query) ||
-r.location.toLowerCase().includes(query)
-);
-renderFeed(filtered);
+  const query = document.getElementById('search-input').value.toLowerCase();
+  const filtered = reports.filter(r => 
+    r.breed.toLowerCase().includes(query) ||
+    r.color.toLowerCase().includes(query) ||
+    r.location.toLowerCase().includes(query)
+  );
+  renderFeed(filtered);
 }
+
 function addComment(reportId) {
-const inputField = document.getElementById(`comment-input-${reportId}`);
-const commentText = inputField.value.trim();
-if(!commentText) return;
-const targetReport = reports.find(r => r.id === reportId);
-if(targetReport) {
-targetReport.comments.push({ author: currentUser.name, text:
-commentText });
-JSON.stringify(reports));
+  const inputField = document.getElementById(`comment-input-${reportId}`);
+  const commentText = inputField.value.trim();
+  if(!commentText) return;
+  
+  const targetReport = reports.find(r => r.id === reportId);
+  if(targetReport) {
+    targetReport.comments.push({ author: currentUser.name, text: commentText });
+    localStorage.setItem('lostpaws_reports_scz', JSON.stringify(reports));
+    renderFeed(reports);
+  }
 }
-}
+
 function renderFeed(dataArray) {
-const feedContainer = document.getElementById('feed-container');
-feedContainer.innerHTML = "";
-if(dataArray.length === 0) {
-feedContainer.innerHTML = `<p class="text-center text-[#8C9B95] text-
-sm py-8">No reports match your search criteria in Santa Cruz.</p>`;
-return;
-}
-dataArray.forEach(report => {
-const badgeColor = report.status === 'LOST' ? 'bg-[#FADBD8] text-
-[#900C3F]' : 'bg-[#D4EFDF] text-[#196F3D]';
-const card = document.createElement('div');
-card.className = "bg-white border border-[#EBE7DF] rounded-2xl
-shadow-sm overflow-hidden mb-4";
-let commentsHtml = '';
-report.comments.forEach(c => {
-commentsHtml += `<div class="text-xs text-[#555] mt-1"><strong
-class="text-[#42504B]">${c.author}:</strong> ${c.text}</div>`;
-});
-card.innerHTML = `
-<!-- Post Header -->
-<div class="flex items-center justify-between px-4 py-3 border-b
-border-[#F0ECE1]">
-<div class="flex items-center space-x-2.5">
-<div class="w-8 h-8 bg-[#E2ECE9] text-[#5A8F81] rounded-
-full flex items-center justify-center font-bold text-xs shadow-inner">
-${report.author.charAt(0)}
-</div>
-<span class="font-semibold text-xs text-[#42504B]">$
-{report.author}</span>
-</div>
-<span class="text-[10px] font-extrabold px-2.5 py-1 rounded-
-full ${badgeColor} tracking-wide">${report.status}</span>
-</div>
-<!-- Post Image -->
-justify-center overflow-hidden">
-full object-cover">
-</div>
-<!-- Post Info Body -->
-<div class="p-4 space-y-2 text-xs">
-<div class="flex items-center text-[#555] font-medium">
-<i class="fa-solid fa-location-dot text-[#D98880] w-4
-mr-1"></i>
-rounded-xl border border-[#EBE7DF]">
-{report.breed}</div>
-{report.color}</div>
-</div>
-<p class="text-[#666] pt-1"><strong class="text-
-[#42504B]">Details:</strong> ${report.details}</p>
-<!-- Comment Section Area -->
-<div class="pt-2 border-t border-[#F0ECE1] mt-3">
-<div class="font-bold text-[#7A8A83] text-[10px]
-uppercase tracking-wider mb-1">Local Sightings & Tips</div>
-<div class="space-y-1 mb-2 max-h-24 overflow-y-auto">$
-<span class="truncate">Area: ${report.location}</span>
-<div class="grid grid-cols-2 gap-2 p-2.5 bg-[#FAF9F5]
-<div><strong class="text-[#42504B]">Breed:</strong> $
-<div><strong class="text-[#42504B]">Color:</strong> $
-</div>
-<div class="bg-[#F0ECE1] aspect-square w-full flex items-center
-<img src="${report.image}" alt="Pet image" class="w-full h-
-localStorage.setItem('lostpaws_reports_scz',
-renderFeed(reports);
-{commentsHtml || '<span class="text-[#AAA] italic">No updates yet. Can you
-help?</span>'}</div>
-<div class="flex gap-2 mt-2">
-<input type="text" id="comment-input-${report.id}"
-placeholder="Add a comment or contact tip..." class="flex-1 bg-[#FAF9F5] border
-border-[#EBE7DF] rounded-xl px-3 py-1.5 text-xs focus:outline-none">
-<button onclick="addComment(${report.id})" class="bg-
-[#E2ECE9] text-[#42504B] font-bold px-3 py-1.5 rounded-xl hover:bg-[#d1e2de]
-transition">Post</button>
-</div>
-</div>
-<div class="text-[10px] text-[#A0AAA4] pt-1 uppercase
-tracking-wider">${report.date}</div>
-</div>
-`;
-feedContainer.appendChild(card);
-});
+  const feedContainer = document.getElementById('feed-container');
+  feedContainer.innerHTML = "";
+  
+  if(dataArray.length === 0) {
+    feedContainer.innerHTML = `<p class="text-center text-[#8C9B95] text-sm py-8">No reports match your search criteria in Santa Cruz.</p>`;
+    return;
+  }
+  
+  dataArray.forEach(report => {
+    const badgeColor = report.status === 'LOST' ? 'bg-[#FADBD8] text-[#900C3F]' : 'bg-[#D4EFDF] text-[#196F3D]';
+    const card = document.createElement('div');
+    card.className = "bg-white border border-[#EBE7DF] rounded-2xl shadow-sm overflow-hidden mb-4";
+    
+    let commentsHtml = '';
+    report.comments.forEach(c => {
+      commentsHtml += `<div class="text-xs text-[#555] mt-1"><strong class="text-[#42504B]">${c.author}:</strong> ${c.text}</div>`;
+    });
+    
+    card.innerHTML = `
+      <!-- Post Header -->
+      <div class="flex items-center justify-between px-4 py-3 border-b border-[#F0ECE1]">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 bg-[#E2ECE9] text-[#5A8F81] rounded-full flex items-center justify-center font-bold text-xs shadow-inner">
+            ${report.author.charAt(0)}
+          </div>
+          <span class="font-semibold text-xs text-[#42504B]">${report.author}</span>
+        </div>
+        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded-full ${badgeColor} tracking-wide">${report.status}</span>
+      </div>
+
+      <!-- Post Image -->
+      <div class="bg-[#F0ECE1] aspect-square w-full flex items-center justify-center overflow-hidden">
+        <img src="${report.image}" alt="Pet image" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Post Info Body -->
+      <div class="p-4 space-y-2 text-xs">
+        <div class="flex items-center text-[#555] font-medium">
+          <i class="fa-solid fa-location-dot text-[#D98880] w-4 mr-1"></i>
+          <span class="truncate">Area: ${report.location}</span>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-2 p-2.5 bg-[#FAF9F5] rounded-xl border border-[#EBE7DF]">
+          <div><strong class="text-[#42504B]">Breed:</strong> ${report.breed}</div>
+          <div><strong class="text-[#42504B]">Color:</strong> ${report.color}</div>
+        </div>
+
+        <p class="text-[#666] pt-1"><strong class="text-[#42504B]">Details:</strong> ${report.details}</p>
+
+        <!-- Comment Section Area -->
+        <div class="pt-2 border-t border-[#F0ECE1] mt-3">
+          <div class="font-bold text-[#7A8A83] text-[10px] uppercase tracking-wider mb-1">Local Sightings & Tips</div>
+          <div class="space-y-1 mb-2 max-h-24 overflow-y-auto">${commentsHtml || '<span class="text-[#AAA] italic">No updates yet. Can you help?</span>'}</div>
+          <div class="flex gap-2 mt-2">
+            <input type="text" id="comment-input-${report.id}" placeholder="Add a comment or contact tip..." class="flex-1 bg-[#FAF9F5] border border-[#EBE7DF] rounded-xl px-3 py-1.5 text-xs focus:outline-none">
+            <button onclick="addComment(${report.id})" class="bg-[#E2ECE9] text-[#42504B] font-bold px-3 py-1.5 rounded-xl hover:bg-[#d1e2de] transition">Post</button>
+          </div>
+        </div>
+
+        <div class="text-[10px] text-[#A0AAA4] pt-1 uppercase tracking-wider">${report.date}</div>
+      </div>
+    `;
+    feedContainer.appendChild(card);
+  });
 }
 </script>
 </body>
