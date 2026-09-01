@@ -240,6 +240,248 @@ function renderFeed(dataArray) {
       <!-- Post Header -->
       <div class="flex items-center justify-between px-4 py-3 border-b border-[#F0ECE1]">
         <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 bg-<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LostPaws - Santa Cruz</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.hide { display: none !important; }
+body {
+  background-color: #F4F1EA; /* Soft Warm Cream */
+  color: #3D3D3D;
+}
+/* Custom scrollbar for clean feeds & comments */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1edeb;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5d0;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body class="font-sans antialiased pb-24">
+
+<!-- APP CONTAINER (Direct Main Feed Screen) -->
+<div id="app-screen" class="min-h-screen">
+  <!-- Top Navigation Bar -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-[#EBE7DF] sticky top-0 z-40 px-4 py-3.5 shadow-sm">
+    <div class="max-w-md mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-9 h-9 bg-[#E2ECE9] text-[#5A8F81] rounded-xl flex items-center justify-center shadow-inner">
+          <i class="fa-solid fa-paw text-base"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-black tracking-wide text-[#3A4A43] font-serif leading-none">LostPaws</h1>
+          <span class="text-[10px] text-[#8C9B95] font-bold tracking-wider uppercase">Santa Cruz de la Sierra</span>
+        </div>
+      </div>
+      <div>
+        <button onclick="openReportModal()" class="bg-[#5A8F81] hover:bg-[#4A7A6E] text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-md transition flex items-center gap-1.5">
+          <i class="fa-solid fa-plus text-[10px]"></i> Report Pet
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Feed Layout -->
+  <main class="max-w-md mx-auto pt-4 px-3 space-y-4">
+    <!-- Search & Filter Bar -->
+    <div class="bg-white p-3.5 rounded-2xl border border-[#EBE7DF] shadow-sm flex items-center space-x-3">
+      <i class="fa-solid fa-magnifying-glass text-[#8C9B95] pl-1"></i>
+      <input type="text" id="search-input" oninput="filterFeed()" placeholder="Search Equipetrol, Urubó, breed..." class="w-full bg-transparent text-sm focus:outline-none text-[#3D3D3D] placeholder-[#A0AAA4]">
+    </div>
+
+    <!-- Posts Feed Container -->
+    <div id="feed-container" class="space-y-4">
+      <!-- Dynamically injected posts -->
+    </div>
+  </main>
+</div>
+
+<!-- REPORT MODAL -->
+<div id="report-modal" class="fixed inset-0 bg-[#2C3E35]/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hide">
+  <div class="bg-white rounded-3xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto shadow-2xl border border-[#EBE7DF]">
+    <div class="flex justify-between items-center mb-4 border-b border-[#F0ECE1] pb-3">
+      <h2 class="text-base font-extrabold text-[#3A4A43]">Create Santa Cruz Pet Report</h2>
+      <button onclick="closeReportModal()" class="text-[#8C9B95] hover:text-[#3A4A43] p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+    </div>
+    <form onsubmit="handleNewReport(event)" class="space-y-3.5">
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Your Name</label>
+        <input type="text" id="report-author" placeholder="e.g., Carlos Méndez" required class="w-full px-3.5 py-2.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#A3C1AD] text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Status Type</label>
+        <select id="report-status" class="w-full px-3.5 py-2.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#A3C1AD] text-sm font-semibold text-[#3D3D3D]">
+          <option value="LOST">🔴 LOST PET</option>
+          <option value="FOUND">🟢 FOUND PET</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Pet Breed</label>
+        <input type="text" id="report-breed" placeholder="e.g., Mestizo, Poodle" required class="w-full px-3.5 py-2.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#A3C1AD] text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Color / Markings</label>
+        <input type="text" id="report-color" placeholder="e.g., Brown and white spots" required class="w-full px-3.5 py-2.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#A3C1AD] text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Area / Neighborhood</label>
+        <input type="text" id="report-location" placeholder="e.g., Equipetrol Norte, 3er Anillo" required class="w-full px-3.5 py-2.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#A3C1AD] text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Upload Photo</label>
+        <input type="file" id="report-image-file" accept="image/*" required class="w-full px-2 py-1.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl text-xs file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-[#E2ECE9] file:text-[#3A4A43] hover:file:bg-[#d1e2de] cursor-pointer">
+      </div>
+      <div>
+        <label class="block text-xs font-bold uppercase text-[#7A8A83] mb-1">Other Details & Contact (WhatsApp)</label>
+        <textarea id="report-details" placeholder="Collar details, friendly/scared, WhatsApp phone number..." rows="2.5" required class="w-full px-3.5 py-2.5 bg-[#FAF9F5] border border-[#E2ECE9] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#A3C1AD] text-sm"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-[#5A8F81] hover:bg-[#4A7A6E] text-white font-bold py-3 rounded-xl transition shadow-md mt-2">Publish Report</button>
+    </form>
+  </div>
+</div>
+
+<!-- JAVASCRIPT LOGIC -->
+<script>
+// Initial Santa Cruz demo data
+let reports = JSON.parse(localStorage.getItem('lostpaws_reports_scz')) || [
+  {
+    id: 1,
+    author: "Valeria Rojas",
+    status: "LOST",
+    breed: "Golden Retriever",
+    color: "Golden Blonde",
+    location: "Equipetrol, near Av. San Martín",
+    image: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80",
+    details: "Answers to 'Bruno'. Wearing a red leather collar. Contact via WhatsApp: +591 71234567.",
+    date: "2 hours ago",
+    comments: [{ author: "Mateo", text: "I'll keep an eye out near the canal drain in Equipetrol!" }]
+  },
+  {
+    id: 2,
+    author: "Rodrigo Paz",
+    status: "FOUND",
+    breed: "Mestizo / Mixed",
+    color: "Black with white paws",
+    location: "Urubó Village entrance",
+    image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80",
+    details: "Found wandering near the bridge. Very calm, looks well cared for. Call +591 79876543.",
+    date: "5 hours ago",
+    comments: []
+  }
+];
+
+window.onload = function() {
+  renderFeed(reports);
+};
+
+function openReportModal() {
+  document.getElementById('report-modal').classList.remove('hide');
+}
+
+function closeReportModal() {
+  document.getElementById('report-modal').classList.add('hide');
+}
+
+function handleNewReport(e) {
+  e.preventDefault();
+  const fileInput = document.getElementById('report-image-file');
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(uploadEvent) {
+      saveReportObject(uploadEvent.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function saveReportObject(imageUrl) {
+  const authorName = document.getElementById('report-author').value.trim() || "Anonymous Neighbor";
+  const newReport = {
+    id: Date.now(),
+    author: authorName,
+    status: document.getElementById('report-status').value,
+    breed: document.getElementById('report-breed').value,
+    color: document.getElementById('report-color').value,
+    location: document.getElementById('report-location').value,
+    image: imageUrl,
+    details: document.getElementById('report-details').value,
+    date: "Just now",
+    comments: []
+  };
+  reports.unshift(newReport);
+  localStorage.setItem('lostpaws_reports_scz', JSON.stringify(reports));
+  closeReportModal();
+  renderFeed(reports);
+  document.querySelector('#report-modal form').reset();
+}
+
+function filterFeed() {
+  const query = document.getElementById('search-input').value.toLowerCase();
+  const filtered = reports.filter(r => 
+    r.breed.toLowerCase().includes(query) ||
+    r.color.toLowerCase().includes(query) ||
+    r.location.toLowerCase().includes(query)
+  );
+  renderFeed(filtered);
+}
+
+function addComment(reportId) {
+  const inputField = document.getElementById(`comment-input-${reportId}`);
+  const nameField = document.getElementById(`comment-name-${reportId}`);
+  const commentText = inputField.value.trim();
+  const commenterName = nameField ? nameField.value.trim() || "Neighbor" : "Neighbor";
+  
+  if(!commentText) return;
+  
+  const targetReport = reports.find(r => r.id === reportId);
+  if(targetReport) {
+    targetReport.comments.push({ author: commenterName, text: commentText });
+    localStorage.setItem('lostpaws_reports_scz', JSON.stringify(reports));
+    renderFeed(reports);
+  }
+}
+
+function renderFeed(dataArray) {
+  const feedContainer = document.getElementById('feed-container');
+  feedContainer.innerHTML = "";
+  
+  if(dataArray.length === 0) {
+    feedContainer.innerHTML = `
+      <div class="bg-white rounded-2xl p-8 text-center border border-[#EBE7DF] shadow-sm">
+        <i class="fa-solid fa-magnifying-glass text-3xl text-[#C5CCD8] mb-2"></i>
+        <p class="text-[#7A8A83] text-sm font-semibold">No reports match your search criteria in Santa Cruz.</p>
+      </div>`;
+    return;
+  }
+  
+  dataArray.forEach(report => {
+    const badgeColor = report.status === 'LOST' ? 'bg-[#FADBD8] text-[#900C3F]' : 'bg-[#D4EFDF] text-[#196F3D]';
+    const card = document.createElement('div');
+    card.className = "bg-white border border-[#EBE7DF] rounded-2xl shadow-sm overflow-hidden mb-4";
+    
+    let commentsHtml = '';
+    report.comments.forEach(c => {
+      commentsHtml += `<div class="text-xs text-[#555] mt-1 bg-[#FAF9F5] p-2 rounded-xl border border-[#F2EFE9]"><strong class="text-[#3A4A43]">${c.author}:</strong> ${c.text}</div>`;
+    });
+    
+    card.innerHTML = `
+      <!-- Post Header -->
+      <div class="flex items-center justify-between px-4 py-3 border-b border-[#F0ECE1]">
+        <div class="flex items-center space-x-2.5">
           <div class="w-8 h-8 bg-[#E2ECE9] text-[#5A8F81] rounded-full flex items-center justify-center font-bold text-xs shadow-inner">
             ${report.author.charAt(0)}
           </div>
@@ -289,6 +531,9 @@ function renderFeed(dataArray) {
     feedContainer.appendChild(card);
   });
 }
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
